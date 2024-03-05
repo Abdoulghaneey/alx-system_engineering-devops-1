@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
-# Bash script displays all active IPv4s on machine
+#!/bin/bash
 
-ifconfig | grep "inet addr" | cut -d":" -f2 | cut -d" " -f1
+# Get a list of all active network interfaces with IPv4 addresses
+ipv4_addresses=$(ip -o -4 addr | awk '$2 == "inet" {print $4}')
+
+# Ensure consistent formatting for output
+echo "$ipv4_addresses" | sed 's/\/.*$//' | tr '\n' '\n'
