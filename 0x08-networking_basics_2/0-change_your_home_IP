@@ -1,26 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Configures an Ubuntu server as follows:
+#   - localhost resolves to 127.0.0.2
+#   - facebook.com resolves to 8.8.8.8
 
-# Important Note: Modifying the hosts file can have unintended consequences and potentially disrupt essential system functions. Only proceed if you fully understand the risks and implications, and revert the changes immediately upon completion or if issues arise.
-
-echo "**WARNING:** Modifying the hosts file can be risky. Use caution and at your own discretion. This script is provided for educational purposes only and should not be used without a clear understanding of the potential consequences."
-
-read -r -p "Do you want to proceed? (y/N): " response
-
-if [[ "$response" =~ ^[Yy]$ ]]; then
-  # Create a backup of the original hosts file
-  sudo cp /etc/hosts /etc/hosts.backup
-
-  # Update the hosts file for localhost and facebook.com (replace with desired IP addresses if necessary)
-  echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
-  echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
-
-  echo "**Hosts file updated.**"
-
-  # Flush the DNS cache to ensure immediate application of changes
-  sudo systemctl restart systemd-resolved
-
-  echo "**DNS cache flushed.**"
-
-else
-  echo "**Exiting without modifying the hosts file.**"
-fi
+cp /etc/hosts ~/hosts.new
+echo "127.0.0.2		localhost" > ~/hosts.new
+echo "8.8.8.8		facebook.com" >> ~/hosts.new
+cp -f ~/hosts.new /etc/hosts

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-#Using the previous exercise, display lines containing the word "bash"
-./1-list_your_processes | grep bash
+# Displays a list of currently running processes containing the bash keyword.
+# shellcheck disable=SC2009
+
+ps -aux | grep bash

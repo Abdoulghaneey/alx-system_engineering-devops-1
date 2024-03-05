@@ -1,36 +1,62 @@
-0x01. Shell, permission
+![image](https://user-images.githubusercontent.com/105258746/188032422-183595a4-c203-4d44-8f19-e6101f26ed0f.png)
 
-Exercise 0: su betty Script that changes your user ID to betty.
+# 0x01. SHELL, PERMISSIONS PROJECT
 
-Exercise 1: id -un Print the effective user ID of current user. Other alternative is whoami
+# TASKS:
 
-Exercise 2: id -Gn Prints all the groups the current user is part of.
+## 0. Create a script that switches the current user to the user `betty`.
+### File: 0-iam_betty
 
-Exercise 3: chown betty hello Changes the owner of the file hello to the user betty
+## 1. Write a script that prints the effective username of the current user.
+### File: 1-who_am_i
 
-Exercise 4: touch hello Create an empty file called hello
-Exercise 5: chmod u+x hello Add execute permission to the owner of the file hello
+## 2. Write a script that prints all the groups the current user is part of.
+### File: 2-groups
 
-Exercise 6: chmod ug+x,o+r hello Add execute permission to user and group owner, and read permission to others for file hello
+## 3. Write a script that changes the owner of the file `hello` to the user `betty`.
+### File: 3-new_owner
 
-Exercise 7: chmod ugo+x hello Add execution permission to all for file hello.
+## 4. Write a script that creates an empty file called `hello`.
+### File: 4-empty
 
-Exercise 8: chmod 007 hello Set permissions for file hello so owner and group don't have any permissions and other users have all permissions.
+## 5. Write a script that adds execute permission to the owner of the file `hello`.
+### File: 5-execute
 
-Exercise 9: chmod 753 hello Set permissions so owner has all permissions, group has read and execute permissions and others have write and execute permissions.
+## 6. Write a script that adds execute permission to the owner and the group owner, and read permission to other users, to the file `hello`.
+### File: 6-multiple_permissions
 
-Exercise 10: chmod --reference=olleh hello Copies the mode of file olleh to file hello.
+## 7. Write a script that adds execution permission to the owner, the group owner and the other users, to the file `hello`.
+### File: 7-everybody
 
-Exercise 11: chmod -R +X . Add execute permission to all subdirectories of the current directory for the everyone. Regular files should not be changed.
+## 8. Write a script that sets the permission to the file `hello` as follows: 
+``Owner: no permission at all``
+``Group: no permission at all``
+``Other users: all the permissions``
+### File: 8-James_Bond
 
-Exercise 12: mkdir -m 751 my_dir Create a directory called my_dir with permissions 751 in the working directory. User has all read, write, and execute permissions. Group has read and execute permissions. Others have just execute permission.
+## 9. Write a script that sets the mode of the file `hello` to this: `-rwxr-x-wx 1 julien julien 23 Sep 20 14:25 hello`
+### File: 9-John_Doe
 
-Exercise 13: chgrp school hello Change gorup owner to school for the file hello
+## 10. Write a script that sets the mode of the file `hello` the same as `olleh’s` mode.
+### File: 10-mirror_permissions
 
-Exercise 14: chown vincent:staff * Change owner to betty and the group owner to holberton for all files and directories in current directory.
+## 11. Create a script that adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users. Regular files should not be changed.
+### File: 11-directories_permissions
 
-Exercise 15: chown -h vincent:staff _hello Changes the owner and group owner of file _hello to betty and holberton respectively.
+## 12. Create a script that creates a directory called `my_dir` with permissions `751` in the working directory.
+### File: 12-directory_permissions
 
-Exercise 16: chown --from=guillaume betty hello Change owner of the file hello to betty only if it is currently owned by guillaume
+## 13. Write a script that changes the group owner to `school` for the file `hello`
+### File: 13-change_group
 
-Exercise 17: telnet towel.blinkenlights.nl Play the Star Wars IV episode in the terminal. This is a premade script provided online.
+## 14. Write a script that changes the owner to `vincent` and the group owner to `staff` for all the files and directories in the working directory.
+### File: 100-change_owner_and_group
+
+## 15. Write a script that changes the owner and the group owner of `_hello` to `vincent` and `staff` respectively.
+### File: 101-symbolic_link_permissions
+
+## 16. Write a script that changes the owner of the file `hello` to `betty` only if it is owned by the user `guillaume`.
+### File: 102-if_only
+
+## 17. Write a script that will play the StarWars IV episode in the terminal.
+### File: 103-Star_Wars

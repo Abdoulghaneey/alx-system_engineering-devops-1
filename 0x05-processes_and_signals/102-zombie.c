@@ -1,12 +1,20 @@
+/*
+ * File: 102-zombie.c
+ * Auth: Brennan D Baraban
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
 /**
- * infite_while - infinite loop
- * Return: 0
+ * infinite_while - Run an infinite while loop.
+ *
+ * Return: Always 0.
  */
-int infite_while(void)
+int infinite_while(void)
 {
 	while (1)
 	{
@@ -16,25 +24,29 @@ int infite_while(void)
 }
 
 /**
- * main - main function that creates 5 zombie processes
- * Return: 0
+ * main - Creates five zombie processes.
+ *
+ * Return: Always 0.
  */
 int main(void)
 {
-	pid_t child_pid;
-	int i;
+	pid_t pid;
+	char count = 0;
 
-	for (i = 0; i < 5; i++)
+	while (count < 5)
 	{
-		child_pid = fork();
-		if (child_pid > 0)
+		pid = fork();
+		if (pid > 0)
+		{
+			printf("Zombie process created, PID: %d\n", pid);
 			sleep(1);
+			count++;
+		}
 		else
 			exit(0);
-		printf("Zombie process created, PID: %d\n", child_pid);
 	}
 
-	infite_while();
+	infinite_while();
 
-	return (0);
+	return (EXIT_SUCCESS);
 }
